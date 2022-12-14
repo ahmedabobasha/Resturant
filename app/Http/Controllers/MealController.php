@@ -38,4 +38,21 @@ class MealController extends Controller
     }
 
 
+    public function edit(Meal $id)
+    {
+        $cats = Meal::all();
+        return view('meal.edit',compact('id','cats'));
+    }
+    public function update(Request $request ,Meal $id)
+    {
+        $request->validate([
+            'name'=>'required|string|min:3',
+            'description'=>'required|min:3',
+            'price'=>'required|numeric',
+           // 'image'=>'required|mimes:png,jpg,jpeg'
+            ]);
+        $id->update($request->all());
+       return redirect()->route('meal.index')->with('message','data has been update');
+    }
+
 }

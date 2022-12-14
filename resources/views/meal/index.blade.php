@@ -20,6 +20,11 @@
                 <div class="card-header bg-danger text-center">
                     All meal
                 </div>
+                @if (session('message'))
+                    <div class="alert alert-success text-center" role="alert">
+                        {{ session('message') }}
+                    </div>
+                @endif
                 <div class="card-body">
                     <table class="table">
                         <thead>
@@ -45,7 +50,7 @@
                                 <td>{{$meal->description}}</td>
                                 <td>{{$meal->category}}</td>
                                 <td>{{$meal->price}}</td>
-                                <td><a href="#" class="btn btn-primary">edit</a></td>
+                                <td><a href="{{route('meal.edit',$meal->id)}}" class="btn btn-primary">edit</a></td>
                                 <td><a href="#" class="btn btn-danger">delete</a></td>
 
                             </tr>

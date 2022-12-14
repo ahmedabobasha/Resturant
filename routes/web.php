@@ -36,3 +36,5 @@ Route::get('/categories/delete/{id}',[CategoryController::class, 'delete'])->nam
 Route::get('/meals',[MealController::class,'index'])->name('meal.index');
 Route::get('/meal/create', [MealController::class,'create'])->name('meal.create');
 Route::post('/meal/store' ,[MealController::class ,'store'])->name('meal.store');
+Route::get('/meal/{id}/edit',[MealController::class,'edit'])->name('meal.edit');
+Route::post('/meal/{id}',[MealController::class,'update'])->name('meal.update');
