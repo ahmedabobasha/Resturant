@@ -26,7 +26,7 @@
                     </div>
                 @endif
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table border">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -51,7 +51,7 @@
                                 <td>{{$meal->category}}</td>
                                 <td>{{$meal->price}}</td>
                                 <td><a href="{{route('meal.edit',$meal->id)}}" class="btn btn-primary">edit</a></td>
-                                <td><a href="#" class="btn btn-danger">delete</a></td>
+                                <td><a href="{{route('meal.delete',$meal->id)}}"  id="delete" class="btn btn-danger">delete</a></td>
 
                             </tr>
                           @endforeach
@@ -60,6 +60,7 @@
                         @endif
                         </tbody>
                     </table>
+                    {{$meals->links()}}
                 </div>
             </div>
         </div>

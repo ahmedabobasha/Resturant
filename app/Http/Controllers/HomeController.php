@@ -26,7 +26,9 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth()->user()->is_admin ==1 ){
+
             $orders =Order::all();
+
             return view('AdminPage',compact('orders'));
         }
         return view('user');

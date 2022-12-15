@@ -22,19 +22,22 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [VisitorController::class,'index'])->name('VPage');
 
 
+
 Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/categories',[CategoryController::class, 'show'])->name('cat.show');
-Route::post('/categories',[CategoryController::class, 'store'])->name('cat.store');
-Route::get('/categories/{id}/edit',[CategoryController::class,'edit'])->name('cat.edit');
-Route::post('/categories/{id}',[CategoryController::class,'update'])->name('cat.update');
-Route::get('/categories/delete/{id}',[CategoryController::class, 'delete'])->name('cat.delete');
+
+    Route::get('/categories',[CategoryController::class, 'show'])->name('cat.show');
+    Route::post('/categories',[CategoryController::class, 'store'])->name('cat.store');
+    Route::get('/categories/{id}/edit',[CategoryController::class,'edit'])->name('cat.edit');
+    Route::post('/categories/{id}',[CategoryController::class,'update'])->name('cat.update');
+    Route::get('/categories/delete/{id}',[CategoryController::class, 'delete'])->name('cat.delete');
 
 // meals
 
-Route::get('/meals',[MealController::class,'index'])->name('meal.index');
-Route::get('/meal/create', [MealController::class,'create'])->name('meal.create');
-Route::post('/meal/store' ,[MealController::class ,'store'])->name('meal.store');
-Route::get('/meal/{id}/edit',[MealController::class,'edit'])->name('meal.edit');
-Route::post('/meal/{id}',[MealController::class,'update'])->name('meal.update');
+    Route::get('/meals',[MealController::class,'index'])->name('meal.index');
+    Route::get('/meal/create', [MealController::class,'create'])->name('meal.create');
+    Route::post('/meal/store' ,[MealController::class ,'store'])->name('meal.store');
+    Route::get('/meal/{id}/edit',[MealController::class,'edit'])->name('meal.edit');
+    Route::post('/meal/{id}',[MealController::class,'update'])->name('meal.update');
+    Route::get('/meal/destroy/{id}',[MealController::class,'delete'])->name('meal.delete');

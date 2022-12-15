@@ -17,8 +17,9 @@
 
         </div>
         <div class="card-body">
-            <form method="post" action="{{route('meal.update',$id->id)}}" >
+            <form method="post" action="{{route('meal.update',$id->id)}}"enctype="multipart/form-data" >
                 @csrf
+                <input type="hidden"  name="old_image"  value="{{$id->image}}">
                 <div>
                     <label for="name">Meal name</label>
                     <input type="text" name="name" value="{{$id->name}}" class="form-control">
@@ -36,13 +37,16 @@
                     <label for="category">choose category</label>
                     <select name="category" class="form-control">
                         @foreach($cats as $cat)
-                        <option value="{{$cat->category}}">{{$cat->category}}</option>
+                        <option value="{{$cat->cat_name}}">{{$cat->cat_name}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div>
                     <label for="image">meal image</label>
                     <input type="file" name="image" class="form-control">
+                </div>
+                <div class="form-group">
+                    <img src="{{asset($id->image)}}" id="showImage" style="width: 100px; height: 100px;">
                 </div>
                 <div class="form-group text-center">
                     <input type="submit" class="bt btn-primary " value="update" >
