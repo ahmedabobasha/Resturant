@@ -9,9 +9,9 @@
             <a href="{{route('cat.show')}}" ><button type="button" class="btn btn-success">Show category</button></a>
                 </div>
                 </div>
-            <table class="table" border="10">
+            <table class="table table-bordered text-center " >
                 <thead>
-                <tr>
+                <tr class="text-uppercase">
                     <th scope="col">Name</th>
                     <th scope="col">phone</th>
                     <th scope="col">email</th>
@@ -22,9 +22,8 @@
                     <th scope="col">price</th>
                     <th scope="col">total price</th>
                     <th scope="col">address</th>
-                    <th scope="col">accept</th>
-                    <th scope="col">Refuse</th>
-                    <th scope="col">order done</th>
+                    <th scope="col">status</th>
+                    <th scope="col">Action</th>
 
                 </tr>
                 </thead>
@@ -32,19 +31,32 @@
                 @foreach($orders as $order)
 
                 <tr>
-                    <td>{{$order->user ? $order->user->name :'user not found'}}</td>
+                    <td>{{$order->user->name}}</td>
                     <td>{{$order->phone}}</td>
-                    <td>{{$order->user ? $order->user->email :'email not found'}}</td>
+                    <td>{{$order->user->email}}</td>
                     <td>{{$order->date}}</td>
                     <td>{{$order->time}}</td>
-                    <td>{{$order->order_meal? $order->order_meal->name :'name not found'}}</td>
+                    <td>{{$order->order_meal->name}}</td>
                     <td>{{$order->qty}}</td>
-                    <td>${{$order->order_meal ? $order->order_meal->price :'price not found'}}/-</td>
-                    <td>${{$order->order_meal->price * $order->qty}}/-</td>
+                    <td>{{$order->order_meal->price}}$/-</td>
+                    <td>{{$order->order_meal->price * $order->qty}}$/-</td>
                     <td>{{$order->address}}</td>
-                    <td><input type="submit" name="accept" class="btn btn-primary btn-sm"></td>
-                    <td><input type="submit" name="Refuse" class="btn btn-danger btn-sm"></td>
-                    <td><input type="submit" name="" class="btn btn-success btn-sm"></td>
+                    <td>{{$order->status}}</td>
+a
+                    <form method="post" action="{{route('order.status',$order->id)}}">
+                        @csrf
+                        <td>
+                        @if($order->status == 'waiting')
+                        <input type="submit" name="status" value="accept" class="btn btn-primary btn-sm">
+                        <input type="submit" name="status" value="Refuse" class="btn btn-danger btn-sm">
+
+                            @elseif($order->status == 'accept')
+                        <input type="submit" name="status" value="completion" class="btn btn-success btn-sm">
+                        @else
+                            <input type="submit" name="status" value="waiting" class="btn btn-success btn-sm">
+                        @endif
+                        </td>
+                    </form>
                 </tr>
                 @endforeach
                 </tbody>

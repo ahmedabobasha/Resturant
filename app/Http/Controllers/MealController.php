@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\category;
 use App\Models\Meal;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -88,5 +89,13 @@ class MealController extends Controller
     {
         $id->delete();
         return redirect()->back()->with('message','delete success');
+    }
+
+
+    public function show_details($id)
+    {
+        $meal = Meal::find($id);
+        $users =User::find($id);
+        return view('meal.meal_details',compact('meal','users'));
     }
 }

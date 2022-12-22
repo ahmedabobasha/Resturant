@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-3">
                 <div class="card">
-                    <div class="card-header bg-danger text-light text-center ">القائمة</div>
+                    <div class="card-header bg-danger text-light text-center ">list</div>
                     <div class="card-body  ">
                         <ul class="list-group ">
                             <a href="{{ route('meal.index') }}" class="list-group-item list-group-item-action ">MealShow </a>

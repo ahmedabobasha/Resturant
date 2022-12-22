@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('meal_id');
             $table->string('qty')->default(0);
             $table->text('address');
-            $table->string('status')->default('تتم المراجعه');
+            $table->string('status')->default('waiting');
             $table->timestamps();
         });
     }
